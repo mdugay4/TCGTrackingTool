@@ -1,0 +1,65 @@
+{% extends "TCGTrackingTool/layout.html" %}
+<!-- removing intro section -->
+{% block a_unique_name %}
+<div class="flex-wrapper" style="margin-bottom:50px;">
+    <section id="faq" >
+        <title>About US</title>
+
+        <body>
+            <div class="faq-container" style="margin-top:30px;">
+                <h1>ABOUT US</h1>
+                
+                <br>
+                <div class="img--container">
+                {% load static %} 
+                <img src="{% static 'assets/img/render2.png' %}" alt="DMimage" id="titleimages" />
+            </div>
+                <div class="question">
+                    <p>We are a small senior design team from UNLV. We all have a bit of experience in the trading card game space. 
+                        We have played in tournaments, bought and sold cards, and have been avid collectors for years.
+                        We wanted to build an application that can help people in the trading card game space.</p>
+                </div>
+                <div class="question">
+                    <br>
+                    <p>Did you need help building a new deck on a budget?</p>
+                </div>
+                <div class="answer">
+                    <p>Just add the cards you want to your inventory and buy them when the price starts to drop.</p>
+                </div>
+                <div class="question">
+                    <p>Did you want to sell off your old stock?</p>
+                </div>
+                <div class="answer">
+                    <p>Just add the cards and sell them whenever you are ready.</p>
+                </div>
+                <div class="question">
+                    <p>Are you a merchant who is constantly buying low and selling high?</p>
+                </div>
+                <div class="answer">
+                    <p>This tool might be perfect for you!</p>
+                </div>
+                <div class="question">
+                    <p>Do you like collecting cards but don't want to buy the newest ones at full price?</p>
+                </div>
+                <div class="answer">
+                    <p>Our application will do all the tracking for you!</p>
+                </div>
+
+            </div>
+        </body>
+    </section>
+</div>
+
+{% endblock %}
+
+<!-- Page/Tab Title -->
+{% block title %}
+About
+{% endblock %}
+
+
+
+
+{% block content %}
+<p>about page for the Visual Studio Code Django tutorial.</p>
+{% endblock %}

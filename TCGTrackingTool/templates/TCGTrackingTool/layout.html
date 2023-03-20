@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<!--- This is the main HTML DOCUMENT! --->
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>{% block title %}{% endblock %}</title>
+  {% load static %}
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'TCGTrackingTool/site.css' %}" /> -->
+
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <!-- not working correctly -->
+  <!--<link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet"> -->
+  <!-- search bar icon-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
+  <!-- Google Fonts -->
+  <!-- <link href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800' %}" rel="stylesheet"> -->
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+  <!-- <script src="{% static 'assets/js/allproducts.js' %}"></script>    -->
+
+</head>
+<!--navigation menu-->
+<body>
+  <header class="page-head">
+    <!--logo-->
+  <div class="mainlogo"> <a href="{% url 'home' %}">
+    <img src="{% static 'assets/img/logo4.1.png' %}" width="373px" height="auto" alt="logo"/>
+    </a>
+  </div>
+    <nav class="site-nav">
+      <ul class="nav-menu">
+        <li class="menu-active"><a href="{% url 'home' %}">HOME</a></li>
+        <li><a href="{% url 'portfolio' %}">PORTFOLIO</a></li>
+        <li><a href="{%  url 'about' %}">ABOUT US</a></li>
+        <li><a href="{% url 'FAQ' %}">FAQ</a></li>   
+      </ul>
+    </nav>
+  
+   <!-- search bar and clickable magnify glass icon -->
+<form id="myForm" autocomplete="off" class="search_box" method="post" action="{%url 'product'%}">
+
+  {% csrf_token %}
+    <!-- <form autocomplete="off" action="{%url 'product'%}"> -->
+      <div class="autocomplete" >
+      <input id="myInput" type="text" name="card_name" placeholder="Search for cards">
+      </div>
+      <!-- magnifying glass disabled temp
+        <button class="hidden-button">
+        <a><i class="fas fa-search"></i></a>
+      </button>-->
+  </form>
+<!-- logged in as section -->
+  <div class="logged_in">
+    {% if request.user.is_authenticated %}
+          <li>
+            <!--<span class="logged_in_text"> Logged in as: </span><span class="username_topright">username</span></li>-->
+          <li>
+          </li>
+  </div>
+   <!--notifications message icon section-->
+   <div class="message_icon">{% load static %} <a href="{% url 'notifications' %}">
+    <img src="{% static 'assets/img/notifications.png' %}" alt="Mail" style="vertical-align: top; width:25px; position: relative; top: -1.5px;" />
+    {% if msg_count == 0 %}{% else %}
+     <span class="button__badge">
+    {{msg_count}}
+     </span>
+    {% endif %}
+   </a>
+    </div>
+
+<!-- drop down menu-->
+    <button onclick="myFunction()" class="dropbtn"></button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="{% url 'profile' %}"><img src="{% static 'assets/img/user1.png' %}" alt="user"
+          style="width:20px;height:20px;" /> Profile & Settings</a>
+      <a href="{% url 'notifications' %}"><img src="{% static 'assets/img/notif1.png' %}" alt="user"
+          style="width:20px;height:20px;" /> Notifications</a>
+      <a href="{% url 'logout' %}"><img src="{% static 'assets/img/logout1.png' %}" alt="logout"
+          style="width:20px;height:20px;" /> Logout</a>
+    </div>
+    {% else %}
+    <div class="signin_register">
+      <div class="btn1">
+          <a href="{% url 'signin' %}"><button type="button"><b>Sign In</b></button></a>
+      </div>
+      <div class="btn2">
+          <a href="{% url 'register' %}"><button type="button"><b>Register</b></button></a>
+      </div>
+    </div>  
+    {% endif %}
+
+
+
+    <script>
+      /* When the user clicks on the button, 
+      toggle between hiding and showing the dropdown content */
+      function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+      
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+      </script>
+
+      <div class="white_space_filler">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+  </header>
+
+
+  {% block a_unique_name %}
+  <!-- ======= Intro Section ======= -->
+  {% if request.user.is_authenticated %}
+  <!-- various links  -->
+  <div class="flex-wrapper" style="margin-top: -50px;">
+    <h1 style="margin-left: auto; margin-right: auto; margin-top: 80px;
+            z-index: 1;
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+            color: #ececec;
+            font-weight: 600;
+            font-size: 42px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            word-spacing: 30px;  
+            opacity: 0.8;">Latest Cards</h1>
+    <section id="intro" style="height: auto;">
+      <div class="newsAndLinks">
+        <!-- <div style="position: relative; left: 24%;" > -->
+
+      </div>
+
+      <div class="upper" style="margin-top: -700px;">
+
+        <div>
+          <a target="_blank"
+            href="https://www.tcgplayer.com/search/yugioh/legendary-duelists-rage-of-ra?productLineName=yugioh&setName=legendary-duelists-rage-of-ra">
+            <img
+              src="https://mktg-assets.tcgplayer.com/web/release/2020-09/yugioh_legendary_duelists_rage_of_ra_set_image_305x203_09252020.jpg"
+              alt="yugioh" width="350" height="200">
+            <h3>Legendary Duelists: Rage of Ra </h3>
+          </a>
+        </div>
+
+        <div>
+          <a target="_blank"
+            href="https://www.tcgplayer.com/search/pokemon/swsh04-vivid-voltage?productLineName=pokemon&setName=swsh04-vivid-voltage">
+            <img
+              src="https://mktg-assets.tcgplayer.com/web/release/2020-11/pokemon_vivid-voltage_set_image_305x203_11132020.jpg"
+              alt="pokemon" width="350" height="200">
+            <h3>Vivid Voltage </h3>
+          </a>
+        </div>
+        <div>
+          <a target="_blank"
+            href="https://www.tcgplayer.com/search/digimon-card-game/release-special-booster-ver10?productLineName=digimon-card-game&page=1&setName=release-special-booster-ver10">
+            <img
+              src="https://mktg-assets.tcgplayer.com/web/release/2021-01/digimon_starter-decks_search_set_image_305x203_012021.jpg"
+              alt="digimon" width="350" height="200">
+            <h3>Digimon Starter Decks </h3>
+          </a>
+        </div>
+        <div>
+          <a target="_blank"
+            href="https://www.tcgplayer.com/search/dragon-ball-super-ccg/vermilion-bloodline?productLineName=dragon-ball-super-ccg&setName=vermilion-bloodline">
+            <img
+              src="https://mktg-assets.tcgplayer.com/web/release/2020-09/dragon-ball-super_unison-warrior-series-2_set_image_305x203_09252020.jpg"
+              alt="db" width="350" height="200">
+            <h3>Vermilion Bloodline </h3>
+          </a>
+        </div>
+      </div>
+      <div class="upper2">
+        <div>
+          <a target="_blank"
+            href="https://www.tcgplayer.com/search/yugioh/dragons-of-legend-the-complete-series?productLineName=yugioh&setName=dragons-of-legend-the-complete-series">
+            <img
+              src="https://mktg-assets.tcgplayer.com/web/release/2020-09/yugioh_dragons-of-legend-the-complete-series_set_image_305x203_09112020.jpg"
+              alt="yugioh2" width="350" height="200">
+            <h3>Structure Deck: Spirit Charmers </h3>
+          </a>
+        </div>
+        <div>
+          <a target="_blank"
+            href="https://www.tcgplayer.com/search/final-fantasy-tcg/opus-xii?productLineName=final-fantasy-tcg&setName=opus-xii">
+            <img
+              src="https://mktg-assets.tcgplayer.com/web/release/2020-07/final_fantasy_tcg_opus_xii_set_image_305x203_07172020.jpg"
+              alt="ff" width="350" height="200">
+            <h3>Opus XII </h3>
+          </a>
+        </div>
+        <div>
+          <a target="_blank"
+            href="https://www.tcgplayer.com/search/cardfight-vanguard/butterfly-dmoonlight?productLineName=cardfight-vanguard&setName=butterfly-dmoonlight">
+            <img
+              src="https://mktg-assets.tcgplayer.com/web/release/2020-10/cardfight-vanguard_butterfly-d-moonlight_set_image_305x203_10022020.jpg"
+              alt="vanguard1" width="350" height="200">
+            <h3>Butterfly d'Moonlight </h3>
+          </a>
+        </div>
+        <div>
+          <a target="_blank"
+            href="https://www.tcgplayer.com/search/all/phantom-dragon-aeon?q=phantom%20dragon%20aeon&setName=phantom-dragon-aeon&page=1">
+            <img
+              src="https://mktg-assets.tcgplayer.com/web/release/2020-10/cardfight_vanguard_phantom_dragon_aeon_set_image_305x203_10302020.jpg"
+              alt="vanguard2" width="350" height="200">
+            <h3>Phantom Dragon Aeon </h3>
+          </a>
+        </div>
+      </div>
+  </div>
+  </div>
+  <div class="flex-wrapper flex-wrapper-landing">
+    <div class="banlists">
+      <div class="upperBanLists">
+
+        <div>
+          <div class="yugibanner">
+            <a target="_blank" href="https://img.yugioh-card.com/uk/gameplay/detail.php?id=1155">
+              <img
+                src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/62777770-69ce-4a8d-b6ab-54c82376eb91/dblq3on-de8dc724-c5bd-4f37-9538-5897b332f95e.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNjI3Nzc3NzAtNjljZS00YThkLWI2YWItNTRjODIzNzZlYjkxXC9kYmxxM29uLWRlOGRjNzI0LWM1YmQtNGYzNy05NTM4LTU4OTdiMzMyZjk1ZS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.cXdLPQjC6V-otEA_c1V9N071MEcPqik72AChDxgFqys"
+                alt="banlistyugioh2" width="auto" height="auto">
+            </a>
+          </div>
+        </div>
+
+
+        <div class="yugibannermagi">
+          <div>
+            <a target="_blank" href="https://img.yugioh-card.com/uk/gameplay/detail.php?id=1155">
+              <p>
+
+
+
+                New Ban List
+
+
+
+
+              </p>
+            </a>
+          </div>
+        </div>
+        <div class="banlistLink">
+          <div>
+            <a target="_blank" href="https://img.yugioh-card.com/uk/gameplay/detail.php?id=1155">
+              <p>
+
+
+                Click here
+
+
+
+
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  {% else %}
+  <section id="intro">
+
+    <div class="intro-container" data-aos="zoom-in" data-aos-delay="100">
+      <h1 class="mb-4 pb-0"><span>TCG Tracking Tool</span></h1>
+      <p class="mb-4 pb-0">Our website’s purpose is to create a more efficient way of tracking
+        prices for individual <br>cards for a variety of different trading card games. “Honey” is
+        a free browser extension<br> that can find the best deals for a product you are trying
+        to purchase. It can also track the <br>fluctuating prices of products. However, Honey
+        does not track trading cards. That is where<br> our website comes
+        into play. Our application will function as a sort of wishlist where buyers<br>
+        can be notified when a card they are interested in has changes in price.</p>
+      <a href="{% url 'register' %}" class="about-btn scrollto">Get Started</a>
+<!--VIDEO SECTION-->
+      <div class="video-wrapper">
+      <img src="{% static 'assets/img/thumbnail.png' %}" class ="thumbnail">
+      <img src="{% static 'assets/img/play.png' %}" class="play" onclick="toggle()">
+        <div class="demo">
+          <!-- <video src="{% static 'assets/video/demo.mp4' %}" controls="true"></video> -->
+          <div class="video">
+          <iframe class="youtube-video" width="853" height="480" src="https://www.youtube.com/embed/zbqjtcHSOWc?version=3&enablejsapi=1"  
+            style="border: 3px solid #EEE; z-index:400;"
+                allowfullscreen></iframe>
+          </div>
+          <img src="{% static 'assets/img/close.png' %}" class="close" onclick="toggle()">
+        </div>
+      </div>
+    </div>
+    </div>
+    
+  </section> <!-- End Intro Section -->
+  <div class="flex-wrapper flex-wrapper-landing">
+    <div class="userguide" style="margin-bottom: 100px">
+      <img src="{% static 'assets/img/userguide.png' %}" alt="userguide" />
+    </div>
+  </div>
+  {% endif %}
+
+  {% endblock %}
+
+<!-- Footer Start -->
+<footer class="footer-dark">
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left">
+    <!-- Grid row -->
+    <div class="row">
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+        <!-- Content -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Footer Content</h5>
+        <p>Blah blah blah...stuff about website.</p>
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+        <!-- Links -->
+        <h5 class="font-weight-bold text-uppercase mb-4">About</h5>
+        <ul class="list-unstyled">
+          <li>
+            <p>
+              <a href="#!">Projects</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#!">About Us</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#!">FAQ</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#!">TTT Team</a>
+            </p>
+          </li>
+        </ul>
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+        <!-- Contact details -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Contact Us</h5>
+        <ul class="list-unstyled">
+          <li>
+            <p>
+              <i class="fas fa-envelope mr-3"></i> TCGTrackingTool@gmail.com</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+          </li>
+        </ul>
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+        <!-- Help Links -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Need Help?</h5>
+        <ul class="list-unstyled">
+          <li>
+            <p>
+              <a href="#!">Support</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#!">Help Us Improve</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#!">How To Use</a>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Grid row -->
+  </div>
+
+  <!-- Social Links -->
+  <div class="col item social my-4"><a href="https://www.facebook.com/TCG-TrackingTool-100281401910394" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://twitter.com/TcgTool" target="_blank"><i class="fab fa-twitter"></i></a><a href="https://www.youtube.com/channel/UCMcGrdxq8vo93Qe5G3JOcQA" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://www.instagram.com/tcgtrackingtool/" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" target="_blank"><i class="fab fa-google"></i></a></div>
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 TCG TRACKING TOOL. ALL RIGHTS RESERVED.</div>
+
+</footer-dark>
+<!-- Footer End -->
+
+<!-- Preloader Start -->
+<div class="loader-wrapper">
+  <svg width="200" height="200" viewBox="0 0 100 100">
+      <polyline class="line-cornered stroke-still" points="0,0 100,0 100,100" stroke-width="10" fill="none"></polyline>
+      <polyline class="line-cornered stroke-still" points="0,0 0,100 100,100" stroke-width="10" fill="none"></polyline>
+      <polyline class="line-cornered stroke-animation" points="0,0 100,0 100,100" stroke-width="10" fill="none"></polyline>
+      <polyline class="line-cornered stroke-animation" points="0,0 0,100 100,100" stroke-width="10" fill="none"></polyline>
+    </svg>
+</div>
+<!-- Preloader End -->
+
+<script>
+    $(window).on("load", function(){
+        $(".loader-wrapper").fadeOut("slow");
+    });
+
+</script>
+
+<script src="{% static 'assets/js/allproducts.js' %}"></script>   
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script src="{% static 'assets/js/sortproducts.js' %}"></script>   
+<script src="{% static 'assets/js/videopop.js' %}"></script>   
+</body>
+
+</html>

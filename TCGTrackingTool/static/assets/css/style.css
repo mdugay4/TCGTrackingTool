@@ -1,0 +1,3084 @@
+/**
+* Template Name: TheEvent - v2.2.0
+* Template URL: https://bootstrapmade.com/theevent-conference-event-bootstrap-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
+
+/*--------------------------------------------------------------
+# navigation  menu + search + dropdown
+--------------------------------------------------------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page-head {
+    display: flex;
+    align-items: center;
+    /* Makes the nav items and logo appear vertically centered with the search box*/
+    margin: 1.5rem;
+    justify-content: center;
+}
+
+.mainlogo {
+    width: 330px;
+    /*flex: 0 0 10em;*/
+    max-height: 0vh;
+}
+
+.mainlogo img {
+    position: relative;
+    bottom: 90px;
+    filter: drop-shadow(2px 2px 2px #000000);
+    opacity: 0.9;
+}
+
+.mainlogo img:hover {
+    filter: drop-shadow(3px 3px 10px #000000);
+    opacity: 1;
+}
+
+
+/*--------------------------------------------------------------
+# Search Bar properties
+--------------------------------------------------------------*/
+
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+.fa-search:hover {
+    opacity: 1;
+}
+
+*/::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #fff;
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #fff;
+}
+
+:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #fff;
+}
+
+.search_box {
+    margin: 0 1rem;
+    flex-basis: 0;
+    flex-grow: 1;
+    z-index: 400;
+}
+
+.search_box input[type="text"] {
+    padding: 10px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid #fff;
+    border-radius: 10px;
+    opacity: 0.95;
+    font-size: 18px;
+    color: #fff;
+    outline: none;
+    min-width: 100%;
+    z-index: 400;
+    filter: drop-shadow(3px 3px 3px #000000);
+}
+
+.search_box input:hover {
+    opacity: 1;
+    filter: drop-shadow(3px 3px 10px #000000);
+}
+
+.fa-search {
+    display: inline-block;
+    transform: translateY(-50%);
+    color: #fff;
+    opacity: 0.9;
+    font-size: 25px;
+}
+
+.site-nav>ul {
+    display: flex;
+    margin: 0;
+    color: white;
+}
+
+.site-nav__item {
+    /* Prevent nav items from shrinking 
+     so they won't collide when window gets narrow. */
+    flex-shrink: 0;
+    list-style-type: none;
+    margin: 0 .55rem;
+    cursor: pointer;
+    /* Prevent multi-word nav items from wrapping. */
+    white-space: nowrap;
+}
+
+
+/*drop down menu */
+
+.dropbtn {
+    background-image: url(../img/dropdown.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none !important;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.dropbtn:hover {
+    opacity: 1;
+    filter: drop-shadow(2px 2px 2px #000000);
+}
+
+.dropbtn:active {
+    transform: scale(0.90);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 400;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.8);
+    z-index: 400;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 200px;
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(255, 255, 255) !important;
+    transform: scale(0.98);
+}
+
+.dropdown-content a:active {
+    transform: scale(0.97);
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+    right: 100px;
+    top: 80px;
+}
+
+
+/* logged in text display */
+
+.username_topright {
+    color: #ffaa48;
+}
+
+.logged_in_text {
+    opacity: 0.8;
+}
+
+.logged_in {
+    list-style: none;
+}
+
+.logged_in li {
+    color: white;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+}
+
+.logged_in:hover {
+    opacity: 1;
+}
+
+
+/*message icon and badges */
+
+
+/*  badges   */
+
+.message_icon {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 2px;
+    opacity: 0.9;
+}
+
+.message_icon a {
+    text-decoration: none;
+}
+
+.message_icon:hover {
+    opacity: 1;
+    filter: drop-shadow(2px 2px 2px #000000);
+}
+
+.message_icon:active {
+    transform: scale(0.90);
+}
+
+.button__badge {
+    background-color: #fa3e3e;
+    border-radius: 2px;
+    color: white;
+    padding: 1px 2px;
+    font-size: 10px;
+    letter-spacing: 0px;
+    box-shadow: 2px 2px 2px #000000;
+    text-shadow: -0.3px 1px #000000;
+    position: relative;
+    right: 15px;
+    top: -12px;
+    flex-grow: 0;
+}
+
+
+/*--------------------------------------------------------------
+# Background and General properties
+--------------------------------------------------------------*/
+
+html {
+    width: 100%;
+    height: 100%;
+    background: rgb(28, 29, 57);
+    background: linear-gradient(90deg, rgba(28, 29, 57, 1) 0%, rgba(47, 38, 52, 1) 54%, rgba(47, 38, 53, 1) 100%);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: repeat-y;
+    overflow: fixed;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: transparent;
+}
+
+p {
+    padding: 0;
+    margin: 0 0 0px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    margin: 0 0 20px 0;
+    padding: 0;
+    color: #ffffff;
+}
+
+.main-page {
+    margin-top: 70px;
+}
+
+
+/*--------------------------------------------------------------
+# Navigation Menu  properties
+--------------------------------------------------------------*/
+
+#header .container {
+    left: 80px;
+    position: absolute;
+}
+
+.nav-menu,
+.nav-menu * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 401;
+    text-shadow: 2px 2px 3px #000000;
+}
+
+.nav-menu ul {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    z-index: 99;
+}
+
+.nav-menu li {
+    position: relative;
+    white-space: nowrap;
+}
+
+.nav-menu>li {
+    float: left;
+}
+
+.nav-menu li:hover>ul,
+.nav-menu li.sfHover>ul {
+    display: block;
+}
+
+.nav-menu ul ul {
+    top: 0;
+    left: 100%;
+}
+
+.nav-menu ul li {
+    min-width: 180px;
+}
+
+
+/* Nav Meu Container */
+
+#nav-menu-container {
+    float: right;
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    #nav-menu-container {
+        display: none;
+    }
+}
+
+
+/* Nav Menu Styling */
+
+.nav-menu a {
+    padding: 15px;
+    text-decoration: none;
+    letter-spacing: 5px;
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    outline: none;
+}
+
+@media (max-width: 1199px) {
+    .nav-menu a {
+        padding: 8px 4px;
+    }
+}
+
+.nav-menu a:hover {
+    color: #fff;
+    text-shadow: 3px 3px 4px #000000;
+}
+
+.nav-menu>li {
+    margin-left: 8px;
+}
+
+.nav-menu>li>a:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out 0s;
+    transition-timing-function: linear;
+}
+
+.nav-menu a:hover:before,
+.nav-menu li:hover>a:before,
+.menu-active>a:before {
+    visibility: visible;
+    width: 100%;
+}
+
+.nav-menu ul {
+    margin: 4px 0 0 0;
+    padding: 10px;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+    background: #fff;
+    border-radius: 3px;
+}
+
+.nav-menu ul li {
+    transition: 0.3s;
+}
+
+.nav-menu ul li a {
+    padding: 10px;
+    color: #060c22;
+    transition: 0.3s;
+    display: block;
+    font-size: 13px;
+    text-transform: none;
+    border-radius: 3px;
+}
+
+.nav-menu ul li:hover>a {
+    background: #f82249;
+    color: #fff;
+}
+
+.nav-menu ul ul {
+    margin: 0;
+}
+
+
+/*--------------------------------------------------------------
+# Pre-Loader Properties
+--------------------------------------------------------------*/
+
+.loader-wrapper {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #111111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+svg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(1);
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+}
+
+.stroke-still {
+    stroke: #232323;
+}
+
+.stroke-animation {
+    -webkit-animation: stroke-spacing 1.2s ease-in, stroke-color 4.8s linear;
+    animation: stroke-spacing 1.2s ease-in, stroke-color 4.8s linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-delay: 0;
+    animation-delay: 0;
+    -webkit-animation-direction: normal;
+    animation-direction: normal;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-play-state: running;
+    animation-play-state: running;
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+}
+
+@-webkit-keyframes stroke-spacing {
+    0% {
+        stroke-dasharray: 0 200;
+    }
+    45% {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 200 200;
+    }
+    90% {
+        stroke-dashoffset: -200;
+        stroke-dasharray: 200 200;
+    }
+    100% {
+        stroke-dashoffset: -200;
+        stroke-dasharray: 200 200;
+    }
+}
+
+@keyframes stroke-spacing {
+    0% {
+        stroke-dasharray: 0 200;
+    }
+    45% {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 200 200;
+    }
+    90% {
+        stroke-dashoffset: -200;
+        stroke-dasharray: 200 200;
+    }
+    100% {
+        stroke-dashoffset: -200;
+        stroke-dasharray: 200 200;
+    }
+}
+
+@-webkit-keyframes stroke-color {
+    0% {
+        stroke: #3498DB;
+    }
+    24% {
+        stroke: #643232;
+    }
+    25% {
+        stroke: #327864;
+    }
+    49% {
+        stroke: #327864;
+    }
+    50% {
+        stroke: #32326e;
+    }
+    74% {
+        stroke: #32326e;
+    }
+    75% {
+        stroke: #78325a;
+    }
+    99% {
+        stroke: #78325a;
+    }
+}
+
+@keyframes stroke-color {
+    0% {
+        stroke: #3498DB;
+    }
+    24% {
+        stroke: #643232;
+    }
+    25% {
+        stroke: #327864;
+    }
+    49% {
+        stroke: #327864;
+    }
+    50% {
+        stroke: #32326e;
+    }
+    74% {
+        stroke: #32326e;
+    }
+    75% {
+        stroke: #78325a;
+    }
+    99% {
+        stroke: #78325a;
+    }
+}
+
+
+/*--------------------------------------------------------------*/
+
+
+/*AUTO COMPLETE SECTION */
+
+* {
+    box-sizing: border-box;
+}
+
+
+/*the container must be positioned relative:*/
+
+.autocomplete {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:hover {
+    background-color: #e9e9e9;
+}
+
+.autocomplete-active {
+    background-color: #ebedef !important;
+}
+
+
+/* Autocomplete for search bar */
+
+.autocomplete2 {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.autocomplete2-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    margin-left: 8%;
+    left: 0;
+    width: 85%;
+    right: 0;
+}
+
+.autocomplete2-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete2-items div:hover {
+    background-color: #e9e9e9;
+}
+
+.autocomplete2-active {
+    background-color: #ebedef !important;
+}
+
+
+/*--------------------------------------------------------------
+# Registration Header & Navigation
+--------------------------------------------------------------*/
+
+.signin_register .btn1 button {
+    outline: none;
+    border: none;
+    background: none;
+    color: rgba(255, 255, 255, 0.8);
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
+    overflow: hidden;
+    transition: all .1s ease;
+    text-align: right;
+    padding-right: 10px;
+    position: relative;
+    top: 31.5px;
+    z-index: 400;
+}
+
+.signin_register .btn2 button {
+    outline: none;
+    border: none;
+    background: none;
+    color: rgba(255, 255, 255, 0.8);
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
+    overflow: hidden;
+    transition: all .1s ease;
+    border-left: 2px solid rgba(255, 255, 255, 0.8);
+    text-align: left;
+    padding-left: 10px;
+    position: relative;
+    left: 80px;
+    top: 0px;
+    z-index: 400;
+}
+
+.signin_register button:hover {
+    color: rgb(255, 255, 255);
+}
+
+.signin_register button:active {
+    border: none;
+    outline: none;
+}
+
+.LoggedIn_menu {
+    position: absolute;
+    color: #ffffff;
+    padding-right: 5px;
+    right: 90px;
+}
+
+
+/* Register | Log in */
+
+#header_R {
+    padding-top: 35px;
+    transition: all 0.5s;
+    z-index: 997;
+}
+
+.logout_topright {
+    color: #7a7a7a;
+}
+
+.nav-menu2,
+.nav-menu2 * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-menu2 ul {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    z-index: 99;
+}
+
+.nav-menu2 li {
+    position: relative;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #ffffff;
+    opacity: 0.9;
+    font-family: "Raleway", sans-serif;
+    outline: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 2px;
+    top: 4px;
+}
+
+.nav-menu2>li {
+    float: left;
+}
+
+.nav-menu2 li:hover>ul,
+.nav-menu2 li.sfHover>ul {
+    display: block;
+}
+
+.nav-menu2 ul ul {
+    top: 0;
+    left: 100%;
+}
+
+.nav-menu2 ul li {
+    min-width: 180px;
+}
+
+.nav-menu2 a {
+    padding: 2px;
+    text-decoration: none;
+    display: inline-block;
+    color: #ffffff;
+    opacity: 0.9;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    outline: none;
+}
+
+
+/*--------------------------------------------------------------
+# Drop down menu
+--------------------------------------------------------------*/
+
+
+/*
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  outline:none !important;
+}
+
+.dropbtn:active { 
+  transform: scale(0.90); 
+} 
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  opacity:0.8;
+}
+
+.dropdown-content {
+  display: none ;
+  position: absolute ;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  left: -80px;
+}
+
+.dropdown-content a {
+  color: black !important;
+  padding: 12px 16px !important;
+  text-decoration: none !important;
+  display: block !important;
+}
+
+.dropdown a:hover {
+  background-color: rgb(255, 255, 255) !important;
+  transform: scale(0.98);
+}
+.dropdown a:active {
+  transform: scale(0.97);
+}
+
+.show {
+  display: block;
+}
+*/
+
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+#header {
+    position: absolute;
+    background: #111111;
+    border-bottom: 2px solid #252525;
+    width: 100%;
+    height: 100px;
+    padding: 25px 0;
+    transition: all 0.5s;
+    z-index: 997;
+    box-shadow: -1px -1px 5px rgb(0, 0, 0);
+}
+
+
+/*--------------------------------------------------------------
+# Intro Section
+--------------------------------------------------------------*/
+
+#intro {
+    width: 100%;
+    height: 100vh;
+}
+
+#intro .intro-container {
+    position: absolute;
+    background-image: url(../img/cardssplash.png);
+    background-repeat: no-repeat;
+    background-attachment: absolute;
+    background-position: 53% 50%;
+    background-size: auto;
+    bottom: 0;
+    left: 0px;
+    top: 75px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: left;
+    padding: 0 15px;
+}
+
+@media (max-width: 991px) {
+    #intro .intro-container {
+        top: 70px;
+    }
+}
+
+#intro h1 {
+    color: #fff;
+    font-family: "Raleway", sans-serif;
+    font-size: 56px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+#intro h1 span {
+    color: #fffec6;
+    text-shadow: 2px 2px 8px #000000;
+}
+
+@media (max-width: 991px) {
+    #intro h1 {
+        font-size: 34px;
+    }
+}
+
+#intro p {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16px;
+    text-shadow: 4px 4px 5px #000000;
+    line-height: 25px;
+}
+
+@media (max-width: 991px) {
+    #intro p {
+        font-size: 16px;
+    }
+}
+
+#intro .about-btn {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 50px;
+    transition: 0.5s;
+    line-height: 1;
+    margin: 10px;
+    color: #fff;
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+    border: 2px solid #fffec6;
+}
+
+#intro .about-btn:hover {
+    background: #f1303d;
+    color: #fff;
+}
+
+@-webkit-keyframes pulsate-btn {
+    0% {
+        transform: scale(0.6, 0.6);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1, 1);
+        opacity: 0;
+    }
+}
+
+@keyframes pulsate-btn {
+    0% {
+        transform: scale(0.6, 0.6);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1, 1);
+        opacity: 0;
+    }
+}
+
+
+/*--------------------------------------------------------------
+# Home PAGE Section
+--------------------------------------------------------------*/
+
+
+/*latest cards*/
+
+.upper {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    height: 25%;
+}
+
+.upper>div {
+    flex: 1 1 auto;
+    text-align: center;
+    margin: 1%;
+}
+
+.upper2 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    height: 25%;
+}
+
+.upper2>div {
+    flex: 1 1 auto;
+    text-align: center;
+    margin: 1%;
+}
+
+.flex-wrapper {
+    justify-content: center;
+}
+
+.newsAndLinks {
+    position: relative;
+    top: 100px;
+    left: 15%;
+}
+
+.newsAndLinks img {
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: 10px 10px 8px #000000;
+}
+
+.newsAndLinks h3 {
+    color: white;
+}
+
+.newsAndLinks h3:hover {
+    color: rgb(255, 241, 161);
+    text-decoration: underline;
+}
+
+.banlists {
+    position: relative;
+    margin-top: 10%;
+    /* margin-left: 15%; */
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+}
+
+.upperBanLists {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.upperBanLists>div {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.yugibanner {
+    position: relative;
+    z-index: 1;
+}
+
+.yugibannermagi p {
+    position: absolute;
+    left: 49%;
+    top: 10%;
+    width: 100%;
+    font-size: 60px;
+    color: white;
+}
+
+.banlistLink p {
+    position: absolute;
+    left: 30%;
+    top: 22%;
+    width: 100%;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-decoration: underline;
+    color: rgb(255, 247, 180);
+}
+
+.userguide {
+    position: relative;
+    margin-top: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*--------------------------------------------------------------
+# Cards properties
+--------------------------------------------------------------*/
+
+.tcg-card {
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: 10px 10px 8px #000000;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-image-button {
+    border: none;
+    padding: 0px;
+    background: none;
+    outline: none;
+    width: 100%;
+}
+
+.normal-price-header {
+    background: lightgoldenrodyellow;
+}
+
+.foil-price-header {
+    background: goldenrod;
+}
+
+
+/*--------------------------------------------------------------
+# Cards hover properties & buttons
+--------------------------------------------------------------*/
+
+
+/* extra options for portfolio menu sorting*/
+
+
+/* Style the buttons grid/list view */
+
+.btn_viewtype {
+    position: relative;
+    left: 25%;
+    border: none;
+    outline: none;
+    padding: 5px 5px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    opacity: 0.9;
+    border-radius: 4px;
+    outline: 0 !important;
+}
+
+.btn_viewtype:hover {
+    opacity: 1;
+}
+
+.btn_viewtype.active {
+    background-color: #111111;
+    color: white;
+}
+
+.btn_viewtype:active {
+    transform: scale(0.95);
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 999;
+    box-shadow: 1px 10px 8px #000000;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+    opacity: 0.90;
+}
+
+.sidenav a:hover {
+    opacity: 1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.portf_menu {
+    background: none;
+    border: 0;
+    position: relative;
+    left: 84%;
+    bottom: 5%;
+    color: #ffffff;
+    opacity: 0.95;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 101;
+    margin-top: 0%;
+    opacity: 70%;
+    text-transform: uppercase;
+    outline: 0 !important;
+    text-shadow: 3px 3px 4px #000000;
+}
+
+.portf_menu:hover {
+    opacity: 1;
+    text-shadow: 4px 4px 5px #000000, 5px 5px 6px #000000;
+}
+
+.portf_menu:active {
+    transform: scale(0.95);
+}
+
+.search_box2 input[type="text"] {
+    position: relative;
+    width: 85%;
+    margin-left: 8%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid #fff;
+    opacity: 0.95;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #fff;
+    outline: none;
+}
+
+.search_box2 input:hover {
+    opacity: 1;
+}
+
+button.link {
+    background: none;
+    border: none;
+    outline: 0;
+    /* padding: 8px 8px 8px 32px; */
+    margin-left: 5%;
+    padding-left: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    transition: 0.3s;
+    opacity: 0.90;
+}
+
+.inventory_search_header {
+    background: none;
+    border: none;
+    outline: 0;
+    /* padding: 8px 8px 8px 32px; */
+    margin-left: 5%;
+    padding-left: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    transition: 0.3s;
+    opacity: 0.90;
+}
+
+.sidenav .sort_options a,
+.sidenav .game_options a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+    opacity: 0.90;
+}
+
+.sidenav .link:hover {
+    opacity: 1;
+}
+
+.sidenav .sort_options a:hover,
+.sidenav .game_options a:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.sidenav .sort_options a:focus,
+.sidenav .game_options a:focus {
+    opacity: 1;
+    transform: scale(1.09);
+    text-decoration: underline;
+}
+
+.sidenav .link:active {
+    transform: scale(0.95);
+}
+
+#more_options {
+    display: none;
+}
+
+
+/* for portfolio*/
+
+.card-img-top {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+
+/* this applies to all cards - hover animation */
+
+.tcg-card:hover .topCard,
+.tcg-card:hover .bottomCard,
+.tcg-card:hover .ZoomedInCard_priceHistory,
+.tcg-card:hover .Card_SearchPage {
+    opacity: 1;
+    /*filter: brightness(150%);*/
+    /* background: rgba(0, 0, 0, 0.25);*/
+}
+
+
+/* buttons for PORTFOLIO PAGE */
+
+.BuyBtn_Portf {
+    position: absolute;
+    top: -98.5%;
+    left: -20%;
+    text-align: center;
+    z-index: 1;
+}
+
+.BuyBtn_Portf a {
+    padding-top: 5px;
+    padding-right: 13px;
+    padding-bottom: 5px;
+    padding-left: 13px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    border: solid 2px white;
+    opacity: 1;
+    background: rgba(21, 255, 0, 0.7);
+    text-shadow: 2px 2px 4px #000000;
+    border-radius: 4px;
+}
+
+.BuyBtn_Portf a:hover {
+    color: white;
+    text-decoration: underline;
+    box-shadow: 1px 10px 8px #000000;
+    transition: all 0.3s;
+}
+
+.viewPricesBtn_Portf {
+    position: absolute;
+    top: 28%;
+    left: -20%;
+    text-align: center;
+}
+
+.viewPricesBtn_Portf a {
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    border: solid 2px white;
+    opacity: 1;
+    background: rgba(0, 247, 255, 0.7);
+    text-shadow: 2px 2px 4px #000000;
+    border-radius: 4px;
+    font-weight: lighter;
+}
+
+.viewPricesBtn_Portf a:hover {
+    color: white;
+    text-decoration: underline;
+    transition: all 0.3s;
+    box-shadow: 1px 10px 8px #000000;
+}
+
+.RemoveBtn_Portf {
+    position: absolute;
+    top: -112.5%;
+    right: -5%;
+    text-align: center;
+}
+
+.RemoveBtn_Portf a {
+    padding-top: 5px;
+    padding-right: 3px;
+    padding-bottom: 5px;
+    padding-left: 3px;
+    text-align: center;
+    color: white;
+    font-size: 10px;
+    border: solid 2px white;
+    opacity: 1;
+    background: rgba(255, 0, 0, 0.4);
+    text-shadow: 2px 2px 4px #000000;
+    border-radius: 4px;
+}
+
+.RemoveBtn_Portf a:hover {
+    color: white;
+    text-decoration: underline;
+    box-shadow: 1px 10px 8px #000000;
+    transition: all 0.3s;
+}
+
+.quickViewPrice_Portf a {
+    position: absolute;
+    color: white;
+    text-align: center;
+    font-size: 13px;
+    top: -117%;
+    left: 0%;
+    text-shadow: 6px 6px 10px #000000, 3px 3px 5px #000000;
+    transition: opacity 1s;
+    z-index: 0;
+}
+
+.quickViewPrice_Portf:hover {
+    color: white;
+}
+
+.topCard {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    top: 0px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.bottomCard {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 50%;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.hidden-button {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.hidden-button:focus {
+    outline: none !important;
+}
+
+
+/* end portfolio cards */
+
+
+/* buttons for  PRICE HISTORY DETAILS PAGE */
+
+.RemoveBtn_PriceHistory {
+    position: absolute;
+    top: -3%;
+    right: -3%;
+    text-align: center;
+}
+
+.RemoveBtn_PriceHistory a {
+    padding-top: 5px;
+    padding-right: 3px;
+    padding-bottom: 5px;
+    padding-left: 3px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    border: solid 2px white;
+    opacity: 1;
+    background: rgba(255, 0, 0, 0.4);
+    text-shadow: 2px 2px 4px #000000;
+    border-radius: 4px;
+}
+
+.RemoveBtn_PriceHistory a:hover {
+    color: white;
+    text-decoration: underline;
+    box-shadow: 1px 10px 8px #000000;
+    transition: all 0.3s;
+}
+
+
+/* button hover animations */
+
+.RemoveBtn_Portf:hover .AddBtn_SearchPage :hover,
+.AddBtnWish_SearchPage:hover,
+.PriceBtn_SearchPage:hover,
+.BuyBtn_PriceHistory:hover,
+.RemoveBtn_PriceHistory:hover,
+.BuyBtn_Portf:hover,
+.RemoveBtn_Portf:hover,
+.viewPricesBtn_Portf:hover {
+    transform: scale(1.01);
+}
+
+
+/* button click animations */
+
+.AddBtn_SearchPage :active,
+.AddBtnWish_SearchPage :active,
+.PriceBtn_SearchPage :active,
+.SellBtn_PriceHistory :active,
+.BuyBtn_PriceHistory :active,
+.RemoveBtn_PriceHistory :active,
+.BuyBtn_Portf:active,
+.RemoveBtn_Portf :active,
+.viewPricesBtn_Portf :active {
+    transform: scale(0.90);
+}
+
+.ZoomedInCard_priceHistory {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.BuyBtn_PriceHistory {
+    position: absolute;
+    top: 1.1%;
+    left: -15%;
+    text-align: center;
+    z-index: 100;
+}
+
+.BuyBtn_PriceHistory a {
+    padding-top: 8px;
+    padding-right: 23px;
+    padding-bottom: 8px;
+    padding-left: 23px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    border: solid 2px white;
+    opacity: 1;
+    background: rgba(21, 255, 0, 0.8);
+    text-shadow: 2px 2px 2px #000000, 2px 2px 3px #000000;
+    border-radius: 4px;
+    box-shadow: 1px 10px 8px #000000;
+}
+
+.BuyBtn_PriceHistory a:hover {
+    color: white;
+    text-decoration: underline;
+    transition: all 0.3s;
+}
+
+.BuyBtn_PriceHistory:hover .tcg-card {
+    filter: brightness(0%);
+}
+
+
+/*end price history details page cards */
+
+
+/* buttons for SEARCH PRODUCT PAGE */
+
+.AddBtn_SearchPage {
+    position: absolute;
+    top: 1%;
+    right: -15%;
+    text-align: center;
+    z-index: 101;
+    transition-duration: 0.4s;
+}
+
+.AddBtn_SearchPage a {
+    padding-top: 5px;
+    padding-right: 3px;
+    padding-bottom: 5px;
+    padding-left: 3px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    border: solid 2px white;
+    opacity: 1;
+    background: rgba(9, 255, 0, 0.6);
+    text-shadow: 2px 2px 4px #000000;
+    border-radius: 4px;
+}
+
+.AddBtn_SearchPage a:hover {
+    color: white;
+    text-decoration: underline;
+    box-shadow: 1px 10px 8px #000000;
+    transition: all 0.3s;
+}
+
+.AddBtnWish_SearchPage {
+    position: absolute;
+    top: 13%;
+    right: -15%;
+    text-align: center;
+    z-index: 100;
+}
+
+.AddBtnWish_SearchPage a {
+    padding-top: 5px;
+    padding-right: 8px;
+    padding-bottom: 5px;
+    padding-left: 7px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    border: solid 2px white;
+    opacity: 1;
+    background: rgba(111, 0, 255, 0.6);
+    text-shadow: 2px 2px 4px #000000;
+    border-radius: 4px;
+}
+
+.AddBtnWish_SearchPage a:hover {
+    color: white;
+    text-decoration: underline;
+    box-shadow: 1px 10px 8px #000000;
+    transition: all 0.3s;
+}
+
+.PriceBtn_SearchPage {
+    position: absolute;
+    top: 25%;
+    right: -15%;
+    text-align: center;
+}
+
+.PriceBtn_SearchPage a {
+    padding-top: 5px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+    padding-left: 19px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    border: solid 2px white;
+    opacity: 1;
+    background: rgba(0, 247, 255, 0.7);
+    text-shadow: 2px 2px 4px #000000;
+    border-radius: 4px;
+}
+
+.PriceBtn_SearchPage a:hover {
+    color: white;
+    text-decoration: underline;
+    box-shadow: 1px 10px 8px #000000;
+    transition: all 0.3s;
+}
+
+.Card_SearchPage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+
+/* Edition info */
+
+.tooltip {
+    position: absolute;
+    color: #fff;
+    bottom: -1%;
+    font-size: 13px;
+    opacity: 1;
+}
+
+.tooltip:hover {
+    color: #fff;
+}
+
+.tooltip .tooltip_text {
+    width: 250px;
+    visibility: hidden;
+    position: absolute;
+    top: 0%;
+    text-shadow: 6px 6px 10px #000000, 3px 3px 5px #000000, -1px -1px 2px #000000, -2px -2px 2px #000000, -3px -3px 2px #000000, 2px 2px 2px #000000, 4px 4px 3px #000000;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tcg-card:hover .tooltip_text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.category_text_container {
+    font-family: "Raleway", sans-serif;
+    position: absolute;
+    color: #fff;
+    opacity: 70%;
+    font-size: 1.2em;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.category_text {
+    width: 90%;
+    position: absolute;
+    text-align: center;
+    text-shadow: 6px 6px 10px #000000;
+}
+
+
+/* card edition old
+.tooltip_CardEdition {
+  position: absolute;
+  color: #fff;
+  bottom: -35px;
+  font-size: 20px;
+  opacity: 1;
+}
+*/
+
+
+/* end cards search page */
+
+
+/*--------------------------------------------------------------
+# Price detail notify 
+--------------------------------------------------------------*/
+
+
+/* remove red border for incorrect input in Firefox */
+
+input:required {
+    box-shadow: none;
+}
+
+input:invalid {
+    box-shadow: none;
+}
+
+.group {
+    border: none;
+}
+
+.group input {
+    color: #fff;
+    position: relative;
+    left: 3%;
+    top: 10px;
+    background: transparent;
+    font-size: 18px;
+    padding: 20px 0px 10px 5px;
+    display: block;
+    width: 100px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #757575;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#price_detail label {
+    color: #999;
+    font-size: 16px;
+    font-weight: normal;
+    pointer-events: none;
+    position: relative;
+    top: -60px;
+    left: 3%;
+    transition: all 0.5s;
+}
+
+
+/* active state */
+
+#price_detail input:focus~label,
+#price_detail input:valid~label {
+    color: #ffffff;
+}
+
+::placeholder {
+    opacity: 0.5;
+}
+
+.group_checkboxes {
+    position: relative;
+    left: 60%;
+    top: -175px;
+    font-size: 18px;
+    padding-top: 10px;
+    opacity: 0.9;
+}
+
+.group_checkboxes:hover,
+.group_checkboxes label:hover {
+    opacity: 1;
+}
+
+.group_checkboxes label {
+    position: relative;
+    left: 5%;
+    top: 0px;
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+.Submit_NotifyMe {
+    position: relative;
+    bottom: 5%;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.Submit_NotifyMe a {
+    width: 200px;
+    padding-top: 10px;
+    padding-right: 43px;
+    padding-bottom: 10px;
+    padding-left: 43px;
+    text-align: center;
+    color: white;
+    border: solid 2px white;
+    opacity: 1;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.Submit_NotifyMe:hover,
+.Submit_NotifyMe a:hover {
+    color: white;
+    text-decoration: underline;
+    opacity: 1;
+}
+
+
+/*--------------------------------------------------------------
+# Sign In Section
+--------------------------------------------------------------*/
+
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+.center-recaptcha {
+    text-align: center;
+}
+
+.g-recaptcha {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+#signin {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.signinsupportbox {
+    margin-top: 162.5px;
+    width: 450px;
+    height: 0px;
+    top: 70.5%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 0px 30px;
+}
+
+.signinsupportbox a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+.signinsupportbox a:hover {
+    color: white;
+}
+
+.signinbox {
+    width: 450px;
+    height: 496px;
+    background: rgba(255, 255, 255);
+    color: #000;
+    top: 45%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 65px 30px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 5px 7.5px 10px #000;
+}
+
+.signinbox h1 {
+    color: #000;
+    font-family: "Raleway", sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.signinbox p {
+    margin-top: 10px;
+    padding: 0;
+    font-weight: bold;
+    color: #000;
+    font-size: 18px;
+}
+
+.signintextbox1,
+.signintextbox2 {
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    background-color: rgba(218, 228, 255, 0.5);
+    font-size: 20px;
+    padding: 8px 0;
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 5px;
+}
+
+.signintextbox1.focused,
+.signintextbox2.focused {
+    /* even more sweet CSS */
+    border: 2px solid #3d79d4;
+}
+
+.signintextbox1 i,
+.signintextbox2 i {
+    width: 5%;
+    float: left;
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.signintextbox1 input,
+.signintextbox2 input {
+    background-color: white;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 16px;
+    width: 85%;
+    float: left;
+    margin: 5px 10px;
+}
+
+
+/*
+.signinbox input[type="text"],
+input[type="password"] {
+  border: none;
+  background: transparent;
+  background-color: #fff;
+  margin-top: 5px;
+  outline: none;
+  height: 40px;
+  font-size: 16px;
+} 
+*/
+
+.signinbox input[type="submit"] {
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid rgb(218, 218, 218);
+    outline: none;
+    height: 55px;
+    background: #f1303d;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 25px;
+    transition: .1s;
+    overflow: hidden;
+}
+
+.signinbox input[type="submit"]:hover {
+    background: #d82b36;
+}
+
+.signinbox input[type="submit"]:active {
+    transform: scale(.99);
+    background: #a3232b;
+}
+
+.signinbox input[type="submit"]:focus {
+    outline: none;
+}
+
+.signinbox a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+
+/*--------------------------------------------------------------
+# Register Section
+--------------------------------------------------------------*/
+
+#register {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.registersupportbox {
+    margin-top: 160px;
+    width: 450px;
+    height: 0px;
+    top: 78%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 0px 30px;
+}
+
+.registersupportbox a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+.registersupportbox a:hover {
+    color: #fff;
+}
+
+.registerbox {
+    width: 450px;
+    height: 662px;
+    background: rgba(255, 255, 255);
+    color: #000;
+    top: 40%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 65px 30px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 5px 7.5px 10px #000;
+    margin-bottom: 10px;
+}
+
+.registerbox h1 {
+    color: #000;
+    margin: none;
+    font-family: "Raleway", sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.registerbox p {
+    margin-top: 10px;
+    padding: 0;
+    font-weight: bold;
+    color: #000;
+    font-size: 18px;
+}
+
+.registertextbox1,
+.registertextbox2,
+.registertextbox3,
+.registertextbox4 {
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    background-color: rgba(218, 228, 255, 0.5);
+    font-size: 20px;
+    padding: 8px 0;
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 5px;
+}
+
+.registertextbox1 i,
+.registertextbox2 i,
+.registertextbox3 i,
+.registertextbox4 i {
+    width: 5%;
+    float: left;
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.registertextbox1 input,
+.registertextbox2 input,
+.registertextbox3 input,
+.registertextbox4 input {
+    background-color: white;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 16px;
+    width: 85%;
+    float: left;
+    margin: 5px 10px;
+}
+
+.registertextbox1.focused,
+.registertextbox2.focused,
+.registertextbox3.focused,
+.registertextbox4.focused {
+    /* even more sweet CSS */
+    border: 2px solid #3d79d4;
+}
+
+
+/*
+.registerbox input[type="text"],
+.registerbox input[type="password"] {
+  margin-top: 5px;
+  outline: none;
+  height: 40px;
+  color: black;
+  font-size: 16px;
+  border-radius: 5px;
+}
+*/
+
+.registerbox input[type="submit"] {
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid rgb(218, 218, 218);
+    outline: none;
+    height: 55px;
+    background: #f1303d;
+    color: white;
+    font-size: 20px;
+    border-radius: 25px;
+    transition: .1s;
+    overflow: hidden;
+}
+
+.registerbox input[type="submit"]:hover {
+    background: #d82b36;
+}
+
+.registerbox input[type="submit"]:active {
+    transform: scale(.99);
+    background: #a3232b;
+}
+
+.registerbox input[type="submit"]:focus {
+    outline: none;
+}
+
+.registerbox a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+
+/*--------------------------------------------------------------
+# Account Created Section
+--------------------------------------------------------------*/
+
+#account_created {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#account_created .password_reset_form {
+    transform: translate(35%, 15%);
+}
+
+#account_created .password_reset_form label {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: normal;
+    pointer-events: none;
+    transition: all 0.5s;
+}
+
+#account_created .password_reset_form ul {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: normal;
+    pointer-events: none;
+    transition: all 0.5s;
+}
+
+#account_created html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#account_created body {
+    height: 100vh;
+    background: #151519;
+}
+
+#account_created button {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    background: #fff;
+    color: #000;
+    width: 150px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: 600;
+    overflow: hidden;
+    transition: all .1s ease;
+    border: 3px solid #111111;
+}
+
+#account_created button:hover {
+    cursor: pointer;
+    transform: scale(1.05)
+}
+
+#account_created button:hover:before {
+    transform: translateX(300px) skewX(-30deg);
+    opacity: .6;
+    transition: 1.25s;
+}
+
+#account_created button:hover:after {
+    transform: translateX(300px) skewX(-30deg);
+    opacity: 1;
+    transition: 1.25s;
+}
+
+#account_created button:active {
+    background-color: #cccccc;
+    transform: scale(1.0);
+}
+
+#account_created button:focus {
+    outline: none;
+}
+
+#account_created button:before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, .5);
+    width: 60px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: .5s;
+    filter: blur(30px);
+    transform: translateX(-130px) skewX(-15deg);
+}
+
+#account_created button:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, .2);
+    width: 30px;
+    height: 100%;
+    left: 30px;
+    top: 0;
+    opacity: 0;
+    filter: blur(30px);
+    transform: translateX(-130px) scaleX(-15deg);
+}
+
+.accountcreatedbox {
+    width: 1800px;
+    height: 525px;
+    background: none;
+    color: #111111;
+    top: 40%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 10px;
+}
+
+.accountcreatedbox h1 {
+    color: #fff;
+    font-family: "Raleway", sans-serif;
+    font-size: 60px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.accountcreatedbox h2 {
+    color: #fff;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    font-style: bold;
+    font-weight: 500;
+    text-align: center;
+}
+
+
+/*--------------------------------------------------------------
+# Info Recovery Section
+--------------------------------------------------------------*/
+
+#info_recovery {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#info_recovery i {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+#info_recovery html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#info_recovery body {
+    height: 100vh;
+    background: #151519;
+}
+
+.infobox {
+    width: 1800px;
+    height: 700px;
+    background: none;
+    color: #000;
+    top: 35%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 10px;
+}
+
+.infobox h1 {
+    color: #fff;
+    font-family: "Raleway", sans-serif;
+    font-size: 60px;
+    font-style: bold;
+    font-weight: 1000;
+    text-align: center;
+}
+
+.infobox h2 {
+    width: 50%;
+    transform: translate(50%, 0%);
+    color: darkgrey;
+    margin-top: 30px;
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    font-style: bold;
+    font-weight: 1000;
+    text-align: center;
+    line-height: 30px;
+}
+
+#info_recovery .infobox p {
+    margin-top: 20px;
+    padding: 0 15px;
+    font-weight: 1000;
+    color: rgb(85, 85, 85);
+    font-size: 12px;
+    text-align: center;
+}
+
+#info_recovery .infobox button:hover p {
+    font-size: 12px;
+    margin-top: 20px;
+    padding: 0px 15px;
+    color: black;
+}
+
+#info_recovery .btn1 {
+    position: absolute;
+    top: 50%;
+    left: 26%;
+}
+
+#info_recovery .btn2 {
+    position: absolute;
+    top: 50%;
+    left: 43%;
+}
+
+#info_recovery .btn3 {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+}
+
+#info_recovery button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    color: #000;
+    width: 255px;
+    height: 275px;
+    font-size: 20px;
+    font-weight: 1000;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all .1s ease;
+    box-shadow: 5px 7.5px 10px #000;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 3px solid #3d79d4;
+}
+
+#info_recovery button:hover {
+    box-shadow: 0px 0px 0px 0px;
+    background-color: #3d79d4;
+    transform: scale(1.2);
+}
+
+#info_recovery button:hover:before {
+    transform: translateX(300px) skewX(-30deg);
+    opacity: .6;
+    transition: 1.25s;
+}
+
+#info_recovery button:hover:after {
+    transform: translateX(300px) skewX(-30deg);
+    opacity: 1;
+    transition: 1.25s;
+}
+
+#info_recovery button:active {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 0px 0px;
+}
+
+#info_recovery button:before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, .5);
+    width: 60px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: .5s;
+    filter: blur(30px);
+    transform: translateX(-75px) skewX(-15deg);
+}
+
+#info_recovery button:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, .2);
+    width: 30px;
+    height: 100%;
+    left: 30px;
+    top: 0;
+    opacity: 0;
+    filter: blur(30px);
+    transform: translateX(-75px) scaleX(-15deg);
+}
+
+
+/*--------------------------------------------------------------
+# Forgotten Info Section
+--------------------------------------------------------------*/
+
+#forgot_info {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#forgot_info html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#forgot_info body {
+    height: 100vh;
+    background: #151519;
+}
+
+#forgot_info button {
+    position: absolute;
+    top: 65%;
+    left: 42.5%;
+    background: #fff;
+    color: #000;
+    width: 75px;
+    height: 75px;
+    font-size: 20px;
+    font-weight: 1000;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all .1s ease;
+    border: 3px solid #3d79d4;
+}
+
+#forgot_info button:hover {
+    background-color: #3d79d4;
+    cursor: pointer;
+    transform: scale(1.05)
+}
+
+#forgot_info button:hover:before {
+    transform: translateX(300px) skewX(-30deg);
+    opacity: .6;
+    transition: 1.25s;
+}
+
+#forgot_info button:hover:after {
+    transform: translateX(300px) skewX(-30deg);
+    opacity: 1;
+    transition: 1.25s;
+}
+
+#forgot_info button:active {
+    transform: scale(1.0);
+}
+
+#forgot_info button:focus {
+    outline: none;
+}
+
+#forgot_info button:before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, .5);
+    width: 60px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: .5s;
+    filter: blur(30px);
+    transform: translateX(-130px) skewX(-15deg);
+}
+
+#forgot_info button:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, .2);
+    width: 30px;
+    height: 100%;
+    left: 30px;
+    top: 0;
+    opacity: 0;
+    filter: blur(30px);
+    transform: translateX(-130px) scaleX(-15deg);
+}
+
+.forgotbox {
+    width: 1800px;
+    height: 700px;
+    background: none;
+    color: #000;
+    top: 35%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 10px;
+}
+
+.forgotbox h1 {
+    color: #fff;
+    font-family: "Raleway", sans-serif;
+    font-size: 60px;
+    font-style: bold;
+    font-weight: 1000;
+    text-align: center;
+}
+
+.forgottensupportbox {
+    margin-top: 162.5px;
+    width: 450px;
+    height: 0px;
+    top: 68%;
+    left: 45%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 0px 30px;
+}
+
+.forgottensupportbox a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+.forgottensupportbox a:hover {
+    color: white;
+}
+
+.forgotform {
+    width: 500px;
+    height: 450px;
+    background: rgba(255, 255, 255);
+    color: #000;
+    top: 70%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -65%);
+    padding: 50px 30px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 5px 7.5px 10px #000;
+}
+
+.forgotform h1 {
+    color: #000;
+    font-family: "Raleway", sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.forgotform h2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 80%;
+    color: rgb(85, 85, 85);
+    font-family: "Raleway", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    transform: translate(12.5%);
+}
+
+.forgotbox p {
+    margin-top: 10px;
+    margin-left: 20px;
+    padding: 0;
+    font-weight: bold;
+    color: #000;
+    font-size: 18px;
+}
+
+.forgottextbox {
+    justify-self: center;
+    width: 90%;
+    height: 50px;
+    overflow: hidden;
+    background-color: rgba(218, 228, 255, 0.5);
+    font-size: 20px;
+    padding: 8px 0;
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 5px;
+    transform: translate(5%);
+}
+
+.forgottextbox.focused {
+    /* even more sweet CSS */
+    border: 2px solid #3d79d4;
+}
+
+.forgottextbox i {
+    width: 5%;
+    float: left;
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.forgottextbox input {
+    background-color: white;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 16px;
+    width: 85%;
+    float: left;
+    margin: 5px 10px;
+}
+
+#forgot_info .forgotsubmit i {
+    float: left;
+    text-align: center;
+    margin: 0 17.5px;
+    font-size: 40px;
+}
+
+#forgot_info .forgotcancel {
+    transform: translate(43.5%, 525%);
+}
+
+#forgot_info .forgotcancel a {
+    color: darkgrey;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#forgot_info .forgotcancel a:hover {
+    color: rgb(85, 85, 85);
+    transform: scale(.99);
+}
+
+#forgot_info .forgotcancel a:active {
+    transform: scale(.99);
+}
+
+
+/*
+.forgotform input[type="text"],
+input[type="password"] {
+  border: none;
+  background: transparent;
+  background-color: #fff;
+  margin-top: 5px;
+  outline: none;
+  height: 40px;
+  font-size: 16px;
+} 
+*/
+
+.forgotform a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+
+/*saved to insert somewhere else later*/
+
+
+/*html section*/
+
+
+/* <div class="video-wrapper">
+                <div class="video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/5RxoM_RrXD8" frameborder ="0"
+                        allowfullscreen></iframe>
+                </div>
+            </div>*/
+
+
+/*cannot add shadow or border because it will show black bar at the bottom */
+
+.video-wrapper {
+    position: absolute;
+    top: 97%;
+    overflow: hidden;
+}
+
+.thumbnail {
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+.play {
+    position: absolute;
+    top: 105px;
+    left: 226px;
+    cursor: pointer;
+}
+
+.demo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.95);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.demo.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.demo iframe {
+    position: relative;
+    max-width: 900px;
+    outline: none;
+}
+
+.close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+    filter: invert(1);
+    max-width: 32px;
+}
+
+@media (max-width: 991px) {
+    .demo iframe {
+        max-width: 90%;
+    }
+}
+
+
+/*--------------------------------------------------------------
+# FAQ/ABOUT Section, share same code
+--------------------------------------------------------------*/
+
+
+/*FAQ image*/
+
+.img--container {
+    position: absolute;
+    top: -12%;
+    right: 25%;
+}
+
+#titleimages {
+    position: absolute;
+    top: -10%;
+    right: 25%;
+    z-index: 0;
+}
+
+
+/*about image*/
+
+.img--container2 {}
+
+#titleimages2 {
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    z-index: 0;
+}
+
+#faq .faq-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    padding: 0 15px;
+    margin-top: 50px;
+    z-index: 2;
+}
+
+#faq h1 {
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+    color: #fffec6;
+    font-weight: 600;
+    font-size: 56px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    word-spacing: 30px;
+    margin-top: 50px;
+    margin-bottom: 80px;
+    text-shadow: 2px 2px 8px #000000;
+    z-index: 2;
+}
+
+.question p {
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    z-index: 2;
+}
+
+.answer p {
+    position: relative;
+    text-align: center;
+    font-size: 15px;
+    color: rgba(255, 255, 255, .6);
+    padding: 1rem;
+    z-index: 2;
+}
+
+
+/*--------------------------------------------------------------
+# Profile Page
+--------------------------------------------------------------*/
+
+.profile-nav-info {
+    margin-left: 20%;
+}
+
+.profile-nav-info p {
+    color: rgba(255, 255, 255, .6);
+}
+
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+
+/* old footer
+.body-content {
+  background: rgba(6, 12, 34, 0.8);
+} */
+
+.footer {
+    position: relative;
+    clear: both;
+    color: #ffffff;
+    background: rgba(6, 12, 34, 0.8);
+}
+
+.flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer-dark {
+    padding: 25px 0;
+    color: #f0f9ff;
+    background-color: #111111;
+    box-sizing: border-box;
+    border-top: 2px solid #252525;
+    box-shadow: 1px 1px 5px rgb(0, 0, 0);
+}
+
+.footer-dark h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.footer-dark ul {
+    padding: 0;
+    list-style: none;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.footer-dark ul a {
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.6;
+}
+
+.footer-dark ul a:hover {
+    opacity: 1;
+}
+
+@media (max-width:767px) {
+    .footer-dark .item:not(.social) {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+}
+
+.footer-dark .item.text {
+    margin-bottom: 36px;
+}
+
+@media (max-width:767px) {
+    .footer-dark .item.text {
+        margin-bottom: 0;
+    }
+}
+
+.footer-dark .item.text p {
+    opacity: 0.6;
+    margin-bottom: 0;
+}
+
+.footer-dark .item.social {
+    text-align: center;
+}
+
+@media (max-width:991px) {
+    .footer-dark .item.social {
+        text-align: center;
+        margin-top: 20px;
+    }
+}
+
+.footer-dark .item.social>a {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
+    margin: 0 8px;
+    color: #fff;
+    opacity: 0.75;
+}
+
+.footer-dark .item.social>a:hover {
+    opacity: 0.9
+}
+
+.footer-dark .copyright {
+    text-align: center;
+    padding-top: 24px;
+    opacity: 0.3;
+    font-size: 13px;
+    margin-bottom: 0;
+}

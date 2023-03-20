@@ -1,0 +1,114 @@
+{% extends "TCGTrackingTool/layout.html" %}
+
+
+
+{% block a_unique_name %}
+
+
+<!-- Creation of sign-in box in 'sign in page' -->
+<section id="signin" style="margin-top: -100px;" >
+
+    {% if error_msg  %}
+    
+    <div class="alert alert-danger" style="margin-top:130px;" role="alert">
+        {{error_msg}}
+    </div>
+    
+    {% endif %}
+
+    <title>Sign-in Page</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+        <script>
+            function submitUserForm() {
+                var response = grecaptcha.getResponse();
+                if(response.length == 0) {
+                    document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required.</span>';
+                    return false;
+                }
+                return true;
+            }
+     
+            function verifyCaptcha() {
+                document.getElementById('g-recaptcha-error').innerHTML = '';
+            }
+        </script>
+    <body>
+        <div class="signinbox" id="form">
+        <h1>TTT Login</h1>
+            <form method="post" onsubmit="return submitUserForm();">
+                {% csrf_token %}
+                <p>Username</p>
+                <div class="signintextbox1">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="username">
+                </div>
+                <p>Password</p>
+                <div class="signintextbox2">
+                    <i class="fas fa-key"></i>
+                    <input type="password" name="password">
+                </div>
+                <div class="center-recaptcha">
+                    <div class="g-recaptcha" data-sitekey="6LcFrNUZAAAAAKo7kLH6WD8t92hHQpwX1mYlxhnI" data-callback="verifyCaptcha"></div>
+                    <div id="g-recaptcha-error"></div>
+                </div>
+                <input type="submit" name="" value="Sign In">
+                <div class="signinsupportbox">
+                    <a href="{% url 'info-recovery' %}">Forgot your password?</a><br>
+                    <a href="{% url 'register' %}">Don't have an account? Register here.</a>
+                </div>
+            </form>
+        </div>   
+    </body>
+    </div> 
+
+    <script>
+        function setFocused1() {
+            var results = document.querySelectorAll('.signintextbox1');
+            for (result of results) {
+                result.classList.add('focused');
+            }
+        }
+
+        function unsetFocused1() {
+            var results = document.querySelectorAll('.signintextbox1');
+            for (result of results) {
+                result.classList.remove('focused');
+            }
+        }
+
+        var results = document.querySelectorAll('.signintextbox1 input');
+            for (result of results) {
+                result.addEventListener("focusin", setFocused1);
+                result.addEventListener("focusout", unsetFocused1);
+            }
+
+        function setFocused2() {
+            var results = document.querySelectorAll('.signintextbox2');
+            for (result of results) {
+                result.classList.add('focused');
+            }
+        }
+
+        function unsetFocused2() {
+            var results = document.querySelectorAll('.signintextbox2');
+            for (result of results) {
+                result.classList.remove('focused');
+            }
+        }
+
+        var results = document.querySelectorAll('.signintextbox2 input');
+            for (result of results) {
+                result.addEventListener("focusin", setFocused2);
+                result.addEventListener("focusout", unsetFocused2);
+            }
+    </script>
+
+
+</section> <!-- End sign-in box --> 
+{% endblock %}
+
+<!-- Page/Tab Title -->
+{% block title %}
+Sign In
+{% endblock %}

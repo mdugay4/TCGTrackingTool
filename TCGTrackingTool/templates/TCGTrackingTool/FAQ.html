@@ -1,0 +1,75 @@
+{% extends "TCGTrackingTool/layout.html" %}
+{% block a_unique_name %}
+<div class="flex-wrapper" style="margin-bottom:100px;">
+    <section id="faq" >
+        <title>FAQ</title>
+
+        <body>
+            <div class="faq-container">
+                <h1>FAQ</h1>
+                
+                <br>
+                <div class="img--container">
+                {% load static %} 
+                <img src="{% static 'assets/img/renderr1.png' %}" alt="DMimage" id="titleimages" />
+            </div>
+                <div class="question">
+                    <p>What is the goal of TCG Tracking Tool?</p>
+                </div>
+                <div class="answer">
+                    <p>Our goal is to provide an easy way for collectors to keep track of the
+                        the cards they own. Along with the cards they own, they can also track
+                        the changing prices of individual cards. The website also functions as
+                        a wishlist for buyers as they can choose to be notified when a card price
+                        shifts.</p>
+                </div>
+                <div class="question">
+                    <p>How do I get started?</p>
+                </div>
+                <div class="answer">
+                    <p>To get started, you will first have to create an account. Then
+                        you will have access to all the website's functions such as adding
+                        cards to your portfolio and keeping track of card prices.</p>
+                </div>
+                <div class="question">
+                    <p>How do I change my notification settings?</p>
+                </div>
+                <div class="answer">
+                    <p>When you add a card to your inventory, you can also set up to be notified
+                        when the card price changes. You can choose to be notified by text, email, or
+                        via message on the website. To remove a notification for a card, you can go to
+                        your notification settings and remove the notification for the card you no longer
+                        want to keep track of.</p>
+                </div>
+                <div class="question">
+                    <p>Where are the icons used on the website from?</p>
+                </div>
+                <div class="answer">
+                    <p>All icons can be found at https://icons8.com.</p>
+                </div>
+                <div class="question">
+                    <p>How does TCG player calculate the market price of cards?</p>
+                </div>
+                <div class="answer">
+                    <p>The value of a card is based upon actual recent sales from thousands of transactions each day
+                        across thousands of individual sellers.</p>
+                </div>
+
+            </div>
+        </body>
+    </section>
+</div>
+{% endblock %}
+{% block title %}
+FAQ
+
+{% endblock %}
+
+FAQ
+
+
+{% block content %}
+
+<p>FAQ</p>
+
+{% endblock %}

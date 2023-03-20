@@ -1,0 +1,36 @@
+{% extends "TCGTrackingTool/layout.html" %}
+
+
+
+{% block a_unique_name %}
+
+
+<!-- Creation of account-created page -->
+<section id="account_created">
+
+    {% if error_msg  %}
+    <div class="alert alert-danger" style="margin-top:130px;" role="alert">
+        {{error_msg}}
+    </div>
+    
+    {% endif %}
+
+<div class="container">
+    <title>Info Recovery Page</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <div class="accountcreatedbox">
+            <h1>CONGRATULATIONS!</h1>
+            <h2><center>YOUR ACCOUNT HAS SUCCESSFULLY BEEN CREATED!</center></h2>
+                    <div class="forgotsubmit">
+                        <a href="{% url 'signin' %}"><button type="button">LOG IN</br></button></a>
+                    </div>   
+        </div>
+</div>
+</section> <!-- End account-created page --> 
+{% endblock %}
+
+<!-- Page/Tab Title -->
+{% block title %}
+Account Created
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "TCGTrackingTool/layout.html" %}
+
+
+
+{% block a_unique_name %}
+
+
+<!-- Creation of info recovery page -->
+<section id="notsignedin">
+
+    <div class="container">
+        <title>Info Recovery Page</title>
+            <link rel="stylesheet" type="text/css" href="style.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <div class="notsignedinbox">
+            <h1>YOU ARE NOT SIGNED IN!</h1>
+            <h2>You must be signed in to manage a portfolio.</h2>
+        <body>
+            <div class="haveaccount">
+                <div class="btn1">
+                    <a href="{% url 'forgot-username' %}"><button type="button"></br><b>Forgot Username?</b>
+                        <p>Can't remember your username? You can request for a reminder here.</p></button></a>
+            </div>    
+            <div class="donthaveaccount">
+                <div class="btn2">
+                    <a href="{% url 'forgot-password' %}"><button type="button"></br><b>Forgot Password?</b>
+                        <p>Forgot your password? You can reset it here.</p></button></a>
+                </div>
+            </div>   
+        </body>
+        </div>  
+    </div>
+    
+    </section> <!-- End info recovery page --> 
+{% endblock %}
+
+<!-- Page/Tab Title -->
+{% block title %}
+Not Signed In
+{% endblock %}

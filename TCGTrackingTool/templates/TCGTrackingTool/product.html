@@ -1,0 +1,145 @@
+{% extends "TCGTrackingTool/layout.html" %}
+<!-- removing intro section -->
+{% block a_unique_name %}
+<!--Card data shape example
+            "productId": 22238,
+            "name": "Mountain",
+            "cleanName": "Mountain",
+            "imageUrl": "https://tcgplayer-cdn.tcgplayer.com/product/22238_200w.jpg",
+            "categoryId": 2,
+            "groupId": 330,
+            "url": "https://store.tcgplayer.com/yugioh/the-legend-of-blue-eyes-white-dragon/mountain",
+            "modifiedOn": "2013-05-09T12:13:41.653"
+-->
+
+<body>
+  <div class="flex-wrapper">
+    <div class="search_results">
+      <div class="container" style="margin-top: 130px; margin-bottom: 40px">
+        <div
+          id="inventory-added-alert"
+          class="alert alert-secondary"
+          role="alert"
+          style="display: none"
+        >
+          Card Added To Inventory
+        </div>
+
+        <div class="row justify-content-center">
+          {% for card in search_results %}
+          <div class="col-sm-3 mt-5">
+            <div class="card tcg-card" style="width: 13rem">
+              <!-- Display Cards -->
+              <img
+                class="card-img-top"
+                src="{{card.imageUrl}}"
+                alt="Card image cap"
+              />
+
+              <!-- new -->
+              <div class="tooltip">
+                <span class="tooltip_text">Edition: {{card.edition_name}}</span>
+              </div>
+
+              <form method="post" action="{%url 'add-card'%}">
+                {% csrf_token %}
+                <input
+                  type="hidden"
+                  name="product_ID"
+                  value="{{card.productId}}"
+                />
+                <input type="hidden" name="card_name" value="{{card.name}}" />
+                <input
+                  type="hidden"
+                  name="image_url"
+                  value="{{card.imageUrl}}"
+                />
+                <input
+                  type="hidden"
+                  name="category_ID"
+                  value="{{card.categoryId}}"
+                />
+                <input type="hidden" name="group_ID" value="{{card.groupId}}" />
+                <input type="hidden" name="url" value="{{card.url}}" />
+                <div class="Card_SearchPage">
+                  <div class="AddBtn_SearchPage">
+                    <button class="hidden-button add-inventory-btn">
+                      <a> + Inventory </a>
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <!-- add to wishlist outside of form-->
+              <div class="Card_SearchPage">
+                <div class="AddBtnWish_SearchPage">
+                  <button class="hidden-button">
+                    <a> + Wishlist </a>
+                  </button>
+                </div>
+              </div>
+              <!-- prices -->
+              <form
+                action="{% url 'price-history-detail' %}"
+                method="post"
+                target="_blank"
+              >
+                {% csrf_token %}
+                <div class="Card_SearchPage">
+                  <div class="PriceBtn_SearchPage">
+                    <button class="hidden-button">
+                      <a> Prices </a>
+                      <input
+                        type="hidden"
+                        name="product_ID"
+                        value="{{card.productId}}"
+                      />
+                      <input
+                        type="hidden"
+                        name="card_name"
+                        value="{{card.name}}"
+                      />
+                      <input
+                        type="hidden"
+                        name="image_url"
+                        value="{{card.imageUrl}}"
+                      />
+                      <input
+                        type="hidden"
+                        name="category_ID"
+                        value="{{card.categoryId}}"
+                      />
+                      <input
+                        type="hidden"
+                        name="group_ID"
+                        value="{{card.groupId}}"
+                      />
+
+                      <input type="hidden" name="url" value="{{card.url}}" />
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(".add-inventory-btn").click(function () {
+      $("#inventory-added-alert").toggle();
+
+      setTimeout(function () {
+        $("#inventory-added-alert").toggle();
+      }, 1000);
+    });
+  </script>
+</body>
+
+<!-- End Intro Section -->
+{% endblock %}
+
+<!-- Page/Tab Title -->
+{% block title %} Product {% endblock %}

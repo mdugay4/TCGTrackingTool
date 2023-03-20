@@ -1,0 +1,43 @@
+{% extends "TCGTrackingTool/layout.html" %} {% block a_unique_name %}
+
+
+<!-- Creation of password recovery page in -->
+<section id="info_recovery">
+
+    <div class="container">
+        <title>Password Recovery Page</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <div class="infobox">
+            <h1>CAN'T SIGN IN?</h1>
+            <h2>Please check the options below for possible solutions.</h2>
+
+            <body>
+                <div class="forgot_username">
+                    <div class="btn1">
+                        <a href="{% url 'password_reset' %}"><button type="button"><i class="fas fa-user-times"></i></br><b>Forgot Username?</b>
+                    <p>Can't remember your username? You can request for a reminder here.</p></button></a>
+                    </div>
+                </div>
+                <div class="forgot_password">
+                    <div class="btn2">
+                        <a href="{% url 'password_reset' %}"><button type="button"><i class="fas fa-unlock-alt"></i></br><b>Forgot Password?</b>
+                    <p>Forgot your password? You can reset it here.</p></button></a>
+                    </div>
+                </div>
+                <div class="other">
+                    <div class="btn3">
+                        <a href="#"><button type="button"><i class="fas fa-question"></i><i class="fas fa-question"></i><i class="fas fa-question"></i></br><b>Issue Not Listed?</b>
+                    <p>Is your issue not listed here? Click here for more options.</p></button></a>
+                    </div>
+                </div>
+            </body>
+        </div>
+    </div>
+
+</section>
+<!-- End password recovery section -->
+{% endblock %}
+
+<!-- Page/Tab Title -->
+{% block title %} Info Recovery {% endblock %}

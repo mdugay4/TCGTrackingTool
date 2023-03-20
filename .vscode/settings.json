@@ -1,0 +1,11 @@
+{
+  "python.pythonPath": "TCGTrackingTool-venv/bin/python",
+  "[django-html]": {
+    "editor.formatOnSave": true,
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    }
+  }
+}

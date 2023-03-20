@@ -1,0 +1,223 @@
+{% extends "TCGTrackingTool/layout.html" %}
+
+<!-- removing intro section -->
+{% block a_unique_name %}
+<body>
+<div class="flex-wrapper">
+  <div class="price_history_page">
+  <div class="container" style="margin-top: 130px; margin-bottom: 40px;">
+        <div
+          id="submit-notification-alert"
+          class="alert alert-secondary"
+          role="alert"
+          style="display: none"
+        >
+          Notification Set
+        </div>
+    <h1 class="price-history-card-name"> {{card.card_name}}</h1>
+     <div class="row justify-content-center">
+      <div class="col-4 mt-4">
+        <div class="card tcg-card">
+          <img
+            class="card-img-top"
+            src="{{card.image_url}}"
+            alt="Card image cap"
+          />
+          <!--send card info to add-card-view only when user is authenticated -->
+          <form method="post" action="{%url 'remove-card'%}">
+            {% csrf_token %}
+            <input
+              type="hidden"
+              name="product_ID"
+              value="{{card.product_ID}}"
+            />
+            <input type="hidden" name="card_name" value="{{card.card_name}}" />
+            <input type="hidden" name="image_url" value="{{card.image_url}}" />
+            
+            <input
+              type="hidden"
+              name="category_ID"
+              value="{{card.category_ID}}"
+            />
+            <input type="hidden" name="group_ID" value="{{card.group_ID}}" />
+            <!-- old button <button type="submit" href="#" class="btn btn-danger w-100">
+              Remove From Inventory
+            </button> -->
+            <div class="ZoomedInCard_priceHistory">
+              <div class="RemoveBtn_PriceHistory">
+                <button class="hidden-button">
+                  <a> ✖</a>
+                </button>
+              </div>
+          </form>
+
+
+          <!-- buy button outside form-->
+          <div class="BuyBtn_PriceHistory">
+            <button class="hidden-button">
+              <a target="_blank" href={{card.url}}> Buy </a>
+            </button>
+          </div>
+          </div>
+        </div>
+        {% for card in category_name %}
+        <div class="category_text_container" style="visibility: visible;">
+          <span class="category_text">{{card.edition_name}}</span>
+        </div>
+        {% endfor %}
+      </div>
+
+
+      <div class="col-6">
+        <div class="row">
+          {% for card_price in card_prices %}
+          <div class="col-6 mt-4">
+            <div class="card tcg-card" style="width: 100%">
+              <div class="card-header normal-price-header">
+                {{card_price.subTypeName}}
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Low Price: $ {{card_price.lowPrice}}
+                </li>
+                <li class="list-group-item">
+                  Mid Price: $ {{card_price.midPrice}}
+                </li>
+                <li class="list-group-item">
+                  High Price: $ {{card_price.highPrice}}
+                </li>
+                <li class="list-group-item">
+                  Market Price: $ {{card_price.marketPrice}}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {% endfor %}
+          <h3>{{no_price_msg}}</h3>
+          <canvas id="myChart" width="400" height="400"></canvas>
+          {% for choice in graph_options %}
+          <form action="{%url 'price-history-detail'%}" method="post">
+            {% csrf_token %}
+            <button class="btn btn-outline-info">{{choice}}</button>
+
+            <!-- send card info to the view -->
+            <input
+              type="hidden"
+              name="product_ID"
+              value="{{card.product_ID}}"
+            />
+            <input type="hidden" name="graph_choice" value="{{choice}}" />
+          </form>
+          {% endfor %}
+        </div>
+      </div>
+          <!-- notifications section -->
+          
+      <form action="{%url 'create-notification'%}" method='post'>
+      {% csrf_token %}
+        <h1 style=" margin-top: 15%; opacity: 70%;letter-spacing: 5px; " >Notify Me When</h1>
+        
+        <div class="group">      
+          <input type="number" name="below_price" placeholder="ex. 10.00" required>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Price Decreases Below:</label>
+        </div>
+          
+        <div class="group">      
+          <input type="number" name="above_price" placeholder="ex. 15.00" required>
+          <label>Price Increases Above:</label>
+        </div>
+
+       <!-- <div class="group_checkboxes">      
+          <input type="checkbox" >
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Text Me</label>
+        </div>-->
+
+        <!--<div class="group_checkboxes">      
+          <input type="checkbox" >
+          <label>Email Me</label>
+        </div>-->
+
+        <div class="group_checkboxes">      
+          <input type="checkbox">
+          <label>Message Me</label>
+        </div>
+
+        <!-- form information being sent to 'create-notification' view -->
+        <input type="hidden" name="product_ID" value="{{card.product_ID}}">
+        <input type="hidden" name="card_edition" value="{{card_edition}}">
+
+        <div class="Submit_NotifyMe">
+          <button class="hidden-button submit-notification-btn">
+            <a> Submit </a>
+          </button>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+  <script>
+    $(".submit-notification-btn").click(function () {
+      $("#submit-notification-alert").toggle();
+
+      setTimeout(function () {
+      $("#submit-notification-alert").toggle();
+      }, 3000);
+    });
+  </script>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    var ctx = document.getElementById("myChart").getContext("2d");
+
+    const graphData = {{card_graph_data | safe}};
+
+    var myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: graphData.date,
+        datasets: [
+          {
+            label:"{{card_edition | safe}} (Market Price)",
+            data: graphData.market_price,
+            backgroundColor: "RGBA(203,243,240,0.39)"
+            ,
+            borderColor: "#68b0ab"
+            ,
+            borderWidth: 3,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    });
+
+  </script>
+
+
+<!-- End Intro Section -->
+{% endblock %}
+
+<!-- Page/Tab Title -->
+{% block title %} Portfolio {% endblock %} {% block content %} {% endblock %}

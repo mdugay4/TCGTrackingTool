@@ -1,0 +1,168 @@
+{% extends "TCGTrackingTool/layout.html" %}
+
+
+
+{% block a_unique_name %}
+<!-- Display registration errors -->
+
+
+<!-- Creation of register box in 'register page' -->
+<section id="register" style="margin-top: -10px;" >
+
+
+    {% if error_msg  %}
+    
+    <div class="alert alert-danger" style="margin-top:130px;" role="alert">
+        {{error_msg}}
+    </div>
+    
+    {% endif %}
+
+
+    <title>Register Page</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+        <script>
+            function submitUserForm() {
+                var response = grecaptcha.getResponse();
+                if(response.length == 0) {
+                    document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required.</span>';
+                    return false;
+                }
+                return true;
+            }
+     
+            function verifyCaptcha() {
+                document.getElementById('g-recaptcha-error').innerHTML = '';
+            }
+        </script>
+    <body>
+        <div class="registerbox" id="form">
+        <h1>TTT Register</h1>
+            <form method="POST" onsubmit="return submitUserForm();">
+                {% csrf_token %}
+                <p>Email</p>
+                <div class="registertextbox1"> 
+                    <i class="fas fa-envelope"></i>
+                    {{form.email}}
+                </div>
+                <p>Username</p>
+                <div class="registertextbox2"> 
+                    <i class="fas fa-user"></i>
+                    {{form.username}}
+                </div>
+                <p>Password</p>
+                <div class="registertextbox3"> 
+                    <i class="fas fa-key"></i>
+                    {{form.password1}}
+                </div>
+                <p>Confirm Password</p>
+                <div class="registertextbox4"> 
+                    <i class="fas fa-key"></i>
+                    {{form.password2}}
+                </div>
+                <div class="center-recaptcha">
+                    <div class="g-recaptcha" data-sitekey="6LcFrNUZAAAAAKo7kLH6WD8t92hHQpwX1mYlxhnI" data-callback="verifyCaptcha"></div>
+                    <div id="g-recaptcha-error"></div>
+                </div>
+                <input type="submit" name="" value="Register" class="btn btn-block btn-primary submit-btn">
+                <div class="registersupportbox">
+                    <a href="{% url 'signin' %}">Already have an account? Sign in here.</a>
+                </div>  
+            </form>
+        </div>  
+    </body>
+    </div> 
+
+    <script>
+        function setFocused1() {
+            var results = document.querySelectorAll('.registertextbox1');
+            for (result of results) {
+                result.classList.add('focused');
+            }
+        }
+
+        function unsetFocused1() {
+            var results = document.querySelectorAll('.registertextbox1');
+            for (result of results) {
+                result.classList.remove('focused');
+            }
+        }
+
+        var results = document.querySelectorAll('.registertextbox1 input');
+            for (result of results) {
+                result.addEventListener("focusin", setFocused1);
+                result.addEventListener("focusout", unsetFocused1);
+            }
+
+        function setFocused2() {
+            var results = document.querySelectorAll('.registertextbox2');
+            for (result of results) {
+                result.classList.add('focused');
+            }
+        }
+
+        function unsetFocused2() {
+            var results = document.querySelectorAll('.registertextbox2');
+            for (result of results) {
+                result.classList.remove('focused');
+            }
+        }
+
+        var results = document.querySelectorAll('.registertextbox2 input');
+            for (result of results) {
+                result.addEventListener("focusin", setFocused2);
+                result.addEventListener("focusout", unsetFocused2);
+            }
+
+            function setFocused3() {
+            var results = document.querySelectorAll('.registertextbox3');
+            for (result of results) {
+                result.classList.add('focused');
+            }
+        }
+
+        function unsetFocused3() {
+            var results = document.querySelectorAll('.registertextbox3');
+            for (result of results) {
+                result.classList.remove('focused');
+            }
+        }
+
+        var results = document.querySelectorAll('.registertextbox3 input');
+            for (result of results) {
+                result.addEventListener("focusin", setFocused3);
+                result.addEventListener("focusout", unsetFocused3);
+            }  
+
+
+        function setFocused4() {
+            var results = document.querySelectorAll('.registertextbox4');
+            for (result of results) {
+                result.classList.add('focused');
+            }
+        }
+
+        function unsetFocused4() {
+            var results = document.querySelectorAll('.registertextbox4');
+            for (result of results) {
+                result.classList.remove('focused');
+            }
+        }
+
+        var results = document.querySelectorAll('.registertextbox4 input');
+            for (result of results) {
+                result.addEventListener("focusin", setFocused4);
+                result.addEventListener("focusout", unsetFocused4);
+            }  
+    </script>
+
+<script type="text/javascript" src="../static/assets/js/register.js"></script>
+
+</section> <!-- End register box --> 
+{% endblock %}
+
+<!-- Page/Tab Title -->
+{% block title %}
+Registration
+{% endblock %}

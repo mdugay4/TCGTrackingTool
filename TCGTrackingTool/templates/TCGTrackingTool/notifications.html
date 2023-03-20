@@ -1,0 +1,225 @@
+{% extends "TCGTrackingTool/layout.html" %} {% block a_unique_name %}
+
+<body>
+<div class="flex-wrapper">
+  <div class="notifications_page">
+  <section id="intro">
+    <!--<div id="error-msg" style="display: flex; justify-content: center; margin-top: 15%;">-->
+    <h1
+      style="
+        margin-top: 8%;
+        margin-bottom: 2rem;
+        margin-left: 25%;
+        z-index: 1;
+        font-family: 'Raleway', sans-serif;
+        color: #fffec6;
+        font-weight: 600;
+        font-size: 56px;
+        text-transform: uppercase; 
+        text-shadow: 2px 2px 8px #000000;"
+    >
+      Notifications
+    </h1>
+
+    <!--     Fonts and icons     -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
+    />
+    <link
+      href="../../static/assets/css/material-dashboard.css"
+      rel="stylesheet"
+    />
+
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card bg-dark">
+                    <div class="card-header card-header-primary">
+                      <h4 class="card-title">Price Notification Table</h4>
+                      <p class="card-category">
+                        List of price notification set by the user
+                      </p>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead style="color: #D3D3D3" >
+                            <th>Card Name</th>
+                            <th>Card Edition</th>
+                            <th>Below Price</th>
+                            <th>Above Price</th>
+                            <th></th>
+                          </thead>
+                          <tbody>
+                            {% for notification_setting in notification_settings%}
+                            <tr style="color: #D3D3D3">
+
+                              <td>
+                                <form action="{% url 'price-history-detail'%}" method="post">
+                                  {% csrf_token %}
+                                  <button name="get-info" class="hidden-button">
+                                    <input
+                                      type="hidden"
+                                      name="product_ID"
+                                      value="{{notification_setting.product_ID}}"
+                                    />
+                                    <a style="color: #f1faee; font-size: 1.4rem">{{notification_setting.card_name}}</a>
+                                  </button>
+                                </form>
+                              </td>
+
+                              <td>{{notification_setting.card_edition}}</td>
+                              <td>{{notification_setting.below_price}}</td>
+                              <td>{{notification_setting.above_price}}</td>
+                              <td>
+                                <form action="{% url 'notifications'%}" method="post">
+                                  {% csrf_token %}
+                                  <button name="remove" class="hidden-button">
+                                    <input
+                                      type="hidden"
+                                      name="remove_notification_setting"
+                                      value="{{notification_setting.card}}"
+                                    />
+                                    <a style="color: #CC0000; font-size: 1.7rem">&#10005;</a>
+                                  </button>
+                                </form>
+                              </td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+          
+      <div class="container-fluid">
+        <li class="list-group-item bg-dark" style="color: #D3D3D3">
+          <strong>Blue notifications:</strong> Price of card went above set
+          threshold price / <strong>Red notifications:</strong> Price of card
+          went below set threshold price
+        </li>
+
+        <li class="list-group-item"></li>
+        <ul class="list-group">
+          {% for msg in notification_msg %} {% if msg.notification_type == 'A'%}
+
+          <form action="{%url 'notifications'%}" method="post">
+            {% csrf_token %}
+            <li class="list-group-item" style="background-color: #132a13;">
+              <div class="input-group" style="display: table; width: 100%;">
+                <span style="display: table-cell; color: #D3D3D3">
+                  <strong>Card: </strong> {{msg.card_name}},
+                  {{msg.card_edition}} /
+                  <strong>Set Price:</strong> {{msg.threshold_price}} /
+                  <strong>Current Price:</strong> {{msg.current_price}}
+                </span>
+                <span style="display: table-cell; width: 40px; text-align: right;" >
+                  <!-- data needed by the view to remove notification message -->
+                  <input
+                    type="hidden"
+                    name="card_name"
+                    value="{{msg.card_name}}"
+                  />
+                  <input
+                    type="hidden"
+                    name="card_edition"
+                    value="{{msg.card_edition}}"
+                  />
+                  <input
+                    type="hidden"
+                    name="threshold_price"
+                    value="{{msg.threshold_price}}"
+                  />
+                  <input
+                    type="hidden"
+                    name="notification_type"
+                    value="{{msg.notification_type}}"
+                  />
+
+                  <input type="hidden" name="remove_msg" value="remove_msg" />
+
+                  <button name="remove" class="hidden-button">
+                    <a style="color: red;">X</a>
+                  </button>
+                </span>
+              </div>
+            </li>
+          </form>
+
+          {% else %}
+
+          <form action="{%url 'notifications'%}" method="post">
+            {% csrf_token %}
+            <li class="list-group-item" style="background-color: #6a040f;">
+              <div class="input-group" style="display: table; width: 100%">
+                <span style="display: table-cell; color: #D3D3D3">
+                  <strong>Card: </strong> {{msg.card_name}},
+                  {{msg.card_edition}} /
+                  <strong>Set Price:</strong> {{msg.threshold_price}} /
+                  <strong>Current Price:</strong> {{msg.current_price}}
+                </span>
+                <span style="display: table-cell; width: 40px; text-align: right">
+                  <!-- data needed by the view to remove notification message -->
+                  <input
+                    type="hidden"
+                    name="card_name"
+                    value="{{msg.card_name}}"
+                  />
+                  <input
+                    type="hidden"
+                    name="card_edition"
+                    value="{{msg.card_edition}}"
+                  />
+                  <input
+                    type="hidden"
+                    name="threshold_price"
+                    value="{{msg.threshold_price}}"
+                  />
+                  <input
+                    type="hidden"
+                    name="notification_type"
+                    value="{{msg.notification_type}}"
+                  />
+
+                  <input type="hidden" name="remove_msg" value="remove_msg" />
+
+                  <button name="remove" class="hidden-button">
+                    <a style="color: red">X</a>
+                  </button>
+                </span>
+              </div>
+            </li>
+          </form>
+
+          {% endif %} {% endfor %}
+        </ul>
+      </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+</div>
+</body>
+
+<!-- End Intro Section -->
+
+{% endblock %} {% block title %} Profile {% endblock %} {% block content %}
+{%endblock %}
