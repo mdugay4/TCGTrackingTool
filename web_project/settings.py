@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.vercel.app','now.sh','127.0.0.1','localhost']
 
 CELERY_BROKER_URL = 'redis://localhost:6379'
 
@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'web_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR / 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'CaBe42fDGEEEaG26GeEFgb*FDcedGDDf',
+        'HOST': 'roundhouse.proxy.rlwy.net',
+        'PORT': '30364',
     }
 }
 
@@ -137,3 +141,6 @@ EMAIL_PORT = 587 # (EMAIL_PORT = 465 for SSL)
 EMAIL_USE_TLS = True # (EMAIL_USE_SSL = False for SSL)
 EMAIL_HOST_USER = 'tcgtrackingtool@gmail.com'
 EMAIL_HOST_PASSWORD = 'uTETe996!w8sk92H'
+
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
